@@ -1,25 +1,26 @@
 @echo off
 
 REM İndirilecek dosyanın URL'si
-set "url=https://blog.ipleaders.in/wp-content/uploads/2020/02/Ways-Websites-Are-Hacked-How-to-Prevent-Them-1.png"
+REM set "url=https://blog.ipleaders.in/wp-content/uploads/2020/02/Ways-Websites-Are-Hacked-How-to-Prevent-Them-1.png"
 
 REM İndirilecek dosyanın kaydedileceği yol
-set "downloaded_file=%USERPROFILE%\Downloads\background_image.png"
+REM set "downloaded_file=%USERPROFILE%\Downloads\background_image.png"
 
 REM Masaüstü arka planı olarak kullanılacak dosyanın yolu
-set "desktop_file=%USERPROFILE%\Desktop\background_image.png"
+REM set "desktop_file=%USERPROFILE%\Desktop\background_image.png"
 
 REM Resmi indir
-powershell -command "(New-Object System.Net.WebClient).DownloadFile('%url%', '%downloaded_file%')"
+REM powershell -command "(New-Object System.Net.WebClient).DownloadFile('%url%', '%downloaded_file%')"
 
 REM Eğer dosya başarıyla indirilmişse, masaüstü arka planını değiştir
-if exist "%downloaded_file%" (
+REM if exist "%downloaded_file%" (
     REM Masaüstü arka planını değiştirme komutları
-    REG ADD "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "%desktop_file%" /f
-    RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-) else (
-    echo Resim indirilemedi.
-)
+REM    REG ADD "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "%desktop_file%" /f
+REM    RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+REM ) else (
+REM     echo Resim indirilemedi.
+REM )
+mode con: cols=150 lines=30
 title HACKED!!!
 :a
 set /a num=(%Random% %%9)+1
